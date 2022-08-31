@@ -1,0 +1,14 @@
+.newComment{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,103,121,1) 35%, rgba(0,212,255,1) 100%);
+    width: 600px;
+    border-radius: 5px;
+    height: 200px;
+}
+.newComment label {
+    margin-right: 15px;
+    font-family:'Courier New', Courier, monospace;
+}
