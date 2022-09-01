@@ -1,7 +1,9 @@
 import React,{useState} from "react";
 import styles from "./newComment.module.css";
 import axios from "axios";
-const NewComment = () => {
+
+
+const NewComment = ({setComments}) => {
 
   const [newComment,setNewComment]=useState({
     name:"",
@@ -14,7 +16,9 @@ const NewComment = () => {
   }
 
   const addDataInApi=()=>{
-    axios.post("https://jsonplaceholder.typicode.com/comments",newComment).then().catch()
+    axios.post(" http://localhost:3001/comments",newComment)
+    .then(()=> axios.get("http://localhost:3001/comments").then((rev)=>setComments(rev.data))  
+    ).catch()
   }
   return (
     <div className={styles.newComment}>

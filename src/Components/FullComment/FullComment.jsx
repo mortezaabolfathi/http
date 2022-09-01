@@ -9,7 +9,7 @@ const FullComment = ({ selectedId }) => {
     if(selectedId){
       async function getCommentSInCMPFullComment() {
       try {
-        const comments = await axios.get(`https://jsonplaceholder.typicode.com/comments/${selectedId}`);
+        const comments = await axios.get(` http://localhost:3001/comments/${selectedId}`);
         setComment(comments.data);
       } catch (error) {
         console.log(error);
