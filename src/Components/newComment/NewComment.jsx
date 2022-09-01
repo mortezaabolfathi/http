@@ -16,7 +16,11 @@ const NewComment = ({setComments}) => {
   }
 
   const addDataInApi=()=>{
-    http.post("/comments",newComment)
+    http.post("/comments",newComment,{
+      headers:{
+        Authorization:"its add new data",
+      },
+    })
     .then(()=> http.get("/comments").then((rev)=>setComments(rev.data))  
     ).catch()
   }
