@@ -4,6 +4,9 @@ import Comment from "../Components/Comment/Comment,";
 import FullComment from "../Components/FullComment/FullComment";
 import NewComment from "../Components/newComment/NewComment";
 import axios from "axios";
+import {toast}  from 'react-toastify';
+
+
 
 const Container = () => {
   const [comments, setComments] = useState();
@@ -36,6 +39,7 @@ const Container = () => {
         setComments(comments.data.slice(0, 4));
       } catch (error) {
         setError(true)
+        console.log(error)
       }
     }
     getCommentS();
@@ -53,7 +57,10 @@ const Container = () => {
         {comments && !error ? (
           comments.map((c) => <Comment key={c.id} name={c.name} email={c.email} selectedCommentHandler={()=>selectedCommentHandler(c)} />)
         ) : (
+          <>
           <h1> is Lodging data... </h1>
+          {toast.error("this is not valid in fetch")}
+          </>
         )}
       </section>
       <section>
