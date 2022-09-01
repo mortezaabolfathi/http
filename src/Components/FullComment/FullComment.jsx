@@ -1,12 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import styles from "./FullComment.module.css";
-const FullComment = ({selectedId}) => {
+
+const FullComment = ({ selectedId }) => {
+  const [comment, setComment] = useState();
+  
+  useEffect(() => {
+    if(selectedId){
+      async function getCommentSInCMPFullComment() {
+      try {
+        const comments = await axios.get(`https://jsonplaceholder.typicode.com/comments/${selectedId}`);
+        setComment(comments.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getCommentSInCMPFullComment();
+    }
+    
+  }, [selectedId]);
+
   return (
-    <div className={styles.fullComment} >
-      <h5>name  </h5> <p>{selectedId.name} </p>
-      <h5>email </h5> <p> {selectedId.email}</p>
-      <h5>body </h5> <p> {selectedId.body}</p>
-    </div>
+    <>
+      {!comment ? (
+        <h3>Please select comment</h3>
+      ) : (
+        <div className={styles.fullComment}>
+          <div className={styles.boxUseeNameANdEmail}>
+            <h5>name </h5> <p>{comment.name}</p>
+            <h5>email </h5> <p>{comment.email}</p>
+          </div>
+          <h5>{comment.body}</h5>
+          <button>Delete</button>
+        </div>
+      )}
+    </>
   );
 };
 
