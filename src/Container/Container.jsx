@@ -35,7 +35,7 @@ const Container = () => {
   useEffect(() => {
     async function getCommentS() {
       try {
-        const comments = await axios.get(" http://localhost:3001/comments");
+        const comments = await axios.get("http://localhost:3001/comments");
         setComments(comments.data.slice(0, 4));
       } catch (error) {
         setError(true)
@@ -59,12 +59,12 @@ const Container = () => {
         ) : (
           <>
           <h1> is Lodging data... </h1>
-          {toast.error("this is not valid in fetch")}
+          {/* {toast.error("هیچ دیتایی تعریف نشده")} */}
           </>
         )}
       </section>
       <section>
-        <FullComment selectedId={selectedId} />
+        <FullComment selectedId={selectedId} setComments={setComments} />
       </section>
       <section>
         <NewComment setComments={setComments} />
