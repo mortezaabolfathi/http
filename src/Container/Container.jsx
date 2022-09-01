@@ -8,6 +8,7 @@ import axios from "axios";
 const Container = () => {
   const [comments, setComments] = useState();
     const [selectedId, setSelectedId]= useState()
+    const [error, setError]=useState(false)
   // 1_method(promise then catch)
   // useEffect(()=>{
   //     axios.get("https://jsonplaceholder.typicode.com/comments").then((response)=>{
@@ -34,7 +35,7 @@ const Container = () => {
         const comments = await axios.get(" http://localhost:3001/comments");
         setComments(comments.data.slice(0, 4));
       } catch (error) {
-        console.log(error);
+        setError(true)
       }
     }
     getCommentS();
@@ -49,7 +50,7 @@ const Container = () => {
   return (
     <div className={styles.container}>
       <section>
-        {comments ? (
+        {comments && !error ? (
           comments.map((c) => <Comment key={c.id} name={c.name} email={c.email} selectedCommentHandler={()=>selectedCommentHandler(c)} />)
         ) : (
           <h1> is Lodging data... </h1>
