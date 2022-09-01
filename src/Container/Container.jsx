@@ -3,7 +3,7 @@ import styles from "./Container.module.css";
 import Comment from "../Components/Comment/Comment,";
 import FullComment from "../Components/FullComment/FullComment";
 import NewComment from "../Components/newComment/NewComment";
-import axios from "axios";
+import http from "../services/httpServices";
 import {toast}  from 'react-toastify';
 
 
@@ -35,7 +35,7 @@ const Container = () => {
   useEffect(() => {
     async function getCommentS() {
       try {
-        const comments = await axios.get("http://localhost:3001/comments");
+        const comments = await http.get("/comments");
         setComments(comments.data.slice(0, 4));
       } catch (error) {
         setError(true)

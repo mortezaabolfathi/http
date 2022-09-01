@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import styles from "./newComment.module.css";
-import axios from "axios";
+import http from "../../services/httpServices";
 
 
 const NewComment = ({setComments}) => {
@@ -16,8 +16,8 @@ const NewComment = ({setComments}) => {
   }
 
   const addDataInApi=()=>{
-    axios.post(" http://localhost:3001/comments",newComment)
-    .then(()=> axios.get("http://localhost:3001/comments").then((rev)=>setComments(rev.data))  
+    http.post("/comments",newComment)
+    .then(()=> http.get("/comments").then((rev)=>setComments(rev.data))  
     ).catch()
   }
   return (

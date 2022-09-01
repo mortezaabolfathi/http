@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import http from "../../services/httpServices";
 import styles from "./FullComment.module.css";
 
 const FullComment = ({ selectedId, setComments }) => {
@@ -9,7 +9,7 @@ const FullComment = ({ selectedId, setComments }) => {
     if(selectedId){
       async function getCommentSInCMPFullComment() {
       try {
-        const comments = await axios.get(` http://localhost:3001/comments/${selectedId}`);
+        const comments = await http.get(`/comments/${selectedId}`);
         setComment(comments.data);
       } catch (error) {
         console.log(error);
@@ -22,8 +22,8 @@ const FullComment = ({ selectedId, setComments }) => {
 
   const deleteHandler= async ()=>{
     try{
-      await axios.delete(` http://localhost:3001/comments/${selectedId}`);
-      const {data}=await axios.get("http://localhost:3001/comments");
+      await http.delete(`/comments/${selectedId}`);
+      const {data}=await http.get("http://localhost:3001/comments");
       setComments(data)
       setComment("")
     }catch(error){
