@@ -31,9 +31,7 @@ const Container = () => {
   useEffect(() => {
     async function getCommentS() {
       try {
-        const comments = await axios.get(
-          "https://jsonplaceholder.typicode.com/comments"
-        );
+        const comments = await axios.get("https://jsonplaceholder.typicode.com/comments");
         setComments(comments.data.slice(0, 4));
       } catch (error) {
         console.log(error);
@@ -42,15 +40,17 @@ const Container = () => {
     getCommentS();
   }, []);
 
+  
+
   const selectedCommentHandler=(c)=>{
-    setSelectedId(c)
+    setSelectedId(c.id)
   }
 
   return (
     <div className={styles.container}>
       <section>
         {comments ? (
-          comments.map((c) => <Comment name={c.name} email={c.email} selectedCommentHandler={()=>selectedCommentHandler(c)} />)
+          comments.map((c) => <Comment key={c.id} name={c.name} email={c.email} selectedCommentHandler={()=>selectedCommentHandler(c)} />)
         ) : (
           <h1> is Lodging data... </h1>
         )}
