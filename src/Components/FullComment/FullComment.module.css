@@ -1,9 +1,28 @@
 .fullComment{
     display: flex;
-    justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,103,121,1) 35%, rgba(0,212,255,1) 100%);
-    width: 600px;
+    background: linear-gradient(90deg, rgb(193, 191, 238) 0%, rgb(153, 220, 233) 35%, rgba(0,212,255,1) 100%);
+    width: 700px;
+    margin: 5px;
     border-radius: 5px;
+}
+
+.boxUseeNameANdEmail{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    background-color: rgba(240, 248, 255, 0.288);
+    border-radius: 5px 5px 0px 0px;
+}
+.fullComment button{
+    width: 100px;
+    height: 40px;
+    border: 1px solid red;
+    color: rgb(240, 12, 12);
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: rgba(245, 222, 179, 0);
+    cursor: pointer;
 }
